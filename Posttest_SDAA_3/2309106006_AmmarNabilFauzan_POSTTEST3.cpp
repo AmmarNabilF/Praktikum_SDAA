@@ -50,19 +50,16 @@ void hapus_menu_first(){
 void hapus_menu_last(){
     if(head == nullptr){
         cout << "Data kosong" << endl;
+    }else if(head->next == nullptr){
+        delete head;
+        head = nullptr;
     }else{
         menu *temp = head;
-        menu *prev = nullptr;
-        while(temp->next != nullptr){
-            prev = temp;
+        while(temp->next->next != nullptr){
             temp = temp->next;
         }
-        if(prev == nullptr){
-            head = nullptr;
-        }else{
-            prev->next = nullptr;
-        }
-        delete temp;
+        delete temp->next;
+        temp->next = nullptr;
     }
 }
 
